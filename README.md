@@ -1,4 +1,4 @@
-# Sisloc - Teste Técnico - Backend
+# Teste Técnico - Backend
 
 Desenvolva com o MVP solicitado em qualquer tecnologia, e respeitando os seguintes critérios:
   - [x] Portal ou aplicativo
