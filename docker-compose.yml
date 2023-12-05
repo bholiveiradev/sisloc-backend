@@ -1,0 +1,77 @@
+version: '3.1'
+
+services:
+  nodeapi:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /usr/app
+    volumes:
+      - .:/usr/app
+    links: 
+      - mysqldb
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    ports:
+      - $APP_PORT:$APP_PORT
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: unless-stopped
+    networks:
+      - sisloc_network
+
+  mysqldb:
+    image: mysql:5.7
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_DATABASE
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_TCP_PORT: $DB_PORT
+    expose:
+      - $DB_PORT
+    ports:
+      - $DB_PORT:$DB_PORT
+    healthcheck:
+      test: ["CMD", "mysql", "-u$DB_USER", "-p$DB_PASSWORD"]
+      timeout: 20s
+      retries: 10
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - sisloc_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports: 
+      - 3330:80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: $DB_HOST
+      PMA_USER: $DB_USER
+      PMA_PASSWORD: $DB_PASSWORD
+      PMA_PORT: $DB_PORT
+      UPLOAD_LIMIT: 1024M
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    links: 
+      - mysqldb
+    deploy:
+      restart_policy:
+        condition: on-failure
+    restart: unless-stopped
+    networks:
+      - sisloc_network
+
+networks:
+  sisloc_network:
+    driver: bridge
