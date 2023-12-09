@@ -4,7 +4,8 @@ Desenvolva com o MVP solicitado em qualquer tecnologia, e respeitando os seguint
   - [x] Portal ou aplicativo
   - [x] Tela de login e autenticação (criar um usuário "fredx@sisloc.com.br" e senha "123Fred");
   - [x] Backend respondendo a chamadas API REST; 
-  - [ ] Repositório de dados contendo informações da locadora e produtos.
+  - [ ] ***Repositório de dados contendo informações da locadora e produtos.***
+  -- Não entendi a questão do "repositório de dados contendo informa&ccedil;ões da locadora", pois entendi "repositório" os dados armazenados no banco de dados, porém não tive informa&&ccedil;ões de quais dados e onde seriam utilziados.
 
 ## Pré-requisitos
 É preciso ter instalado previamente as seguintes tecnologias:
@@ -40,7 +41,7 @@ NPM:
 ```sh
 npm install
 ```
-ou
+Yarn:
 ```sh
 yarn install
 ```
@@ -70,9 +71,29 @@ ou
 docker compose up -d
 ```
 
+### Para rodar as seeders com dados de teste:
+As seeders irão criar o usuário com o email: "fredx@sisloc.com.br"
+e senha "123Fred" para login e 20 produtos aleatórios
+
+Acesse o container da api:
+```sh
+docker compose exec nodeapi bash
+```
+Rode o comando npm ou yarn para executar as seeders:
+
+NPM:
+```sh
+npm run db:seed
+```
+Yarn:
+```sh
+yarn db:seed
+```
+
 ## Tecnologias Utilizadas
 - [Express](https://expressjs.com/) - Framework Backend
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme) - Utilizado para autentica&ccedil;ão do usuário
 - [bcryptjs](https://github.com/dcodeIO/bcrypt.js#readme) - Utilizado para criptografar senha
 - [Sequelize](https://sequelize.org/) - ORM (Object-Relational Mapping ou Mapeamento Objeto-Relacional) para fazer o mapeamento entre as models e as tabelas do banco
 - [MySQL](https://www.mysql.com/) - Sistema Gerenciador de Banco de Dados
+- [Docker](https://www.docker.com/) - Cria&ccedil;ão de Continers para ambientes isolados da API, Banco de dados (MySQL) e phpmyadmin

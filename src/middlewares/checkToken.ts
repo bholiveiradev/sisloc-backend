@@ -31,8 +31,16 @@ export function checkToken(req: AuthRequest, res: Response, next: NextFunction) 
             return res.status(401).json({ error: 'Erro ao decodificar o token.' });
         }
 
+        // Verifica se o token está prestes a expirar (5 minutos)
+        // Se estiver préximo de expirar, gera um novo token
         const now = Date.now().valueOf() / 1000;
         if (decoded.exp - now < 300) {
+            // Verifica se o token já está expirado, se tiver retorna mensagem de erro
+            if (decoded.exp < now) {
+                return res.status(401).json({ error: 'Token expirado.' });
+            }
+
+            // Está prestes a expirar, portanto gera um novo token
             const newToken = jwt.sign({ userId: decoded.userId }, JWT_SECRET!, { expiresIn: JWT_EXPIRES });
             req.headers.authorization = newToken;
         }
