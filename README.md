@@ -5,7 +5,7 @@ Desenvolva com o MVP solicitado em qualquer tecnologia, e respeitando os seguint
   - [x] Tela de login e autenticação (criar um usuário "fredx@sisloc.com.br" e senha "123Fred");
   - [x] Backend respondendo a chamadas API REST; 
   - [ ] ***Repositório de dados contendo informações da locadora e produtos.***
-  -- Não entendi a questão do "repositório de dados contendo informa&ccedil;ões da locadora", pois entendi "repositório" os dados armazenados no banco de dados, porém não tive informa&&ccedil;ões de quais dados e onde seriam utilziados.
+  -- Não entendi a questão do "repositório de dados contendo informa&ccedil;ões da locadora", pois entendi "repositório" os dados armazenados no banco de dados, porém não tive informa&ccedil;ões de quais dados e onde seriam utilizados.
 
 ## Pré-requisitos
 É preciso ter instalado previamente as seguintes tecnologias:
