@@ -7,9 +7,10 @@ import AuthService from '../services/AuthService';
 
 const router = express.Router();
 
-const userRepository = new UserRepository()
-const authService = new AuthService();
-const authController = new AuthController(userRepository, authService);
+const authController = new AuthController(
+  new UserRepository(),
+  new AuthService()
+);
 
 router.post('/', (req: Request, res: Response) => authController.login(req, res));
 
