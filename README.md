@@ -2,8 +2,9 @@
 
 Desenvolva com o MVP solicitado em qualquer tecnologia, e respeitando os seguintes critérios:
   - [x] Portal ou aplicativo
-  - [x] Tela de login e autenticação (criar um usuário "fredx@sisloc.com.br" e senha "123Fred");
-  - [x] Backend respondendo a chamadas API REST; 
+  - [x] Tela de login e autenticação (criar um usuário "fredx@sisloc.com.br" e senha "123Fred")
+  - [x] Backend respondendo a chamadas API REST
+        
 ***Importante:*** A questão sobre o "repositório de dados contendo informações da locadora e produtos" precisa de esclarecimentos adicionais para definir quais dados e onde serão utilizados.
 
 ## Pré-requisitos
