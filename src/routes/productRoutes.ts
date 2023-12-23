@@ -7,8 +7,9 @@ import { checkToken } from '../middlewares/checkToken';
 
 const router = express.Router();    
 
-const productRepository = new ProductRepository();
-const productController = new ProductController(productRepository);
+const productController = new ProductController(
+  new ProductRepository()
+);
 
 router.use(checkToken);
 
